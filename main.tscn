@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://games/mario/script/mario.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://games/flappy_bird/obj/pipe.tscn" type="PackedScene" id=4]
+[ext_resource path="res://games/mario/obj/florrrr.tres" type="TileSet" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31, 31 )
+
+[node name="main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+moving_platform_apply_velocity_on_leave = 1
+script = ExtResource( 2 )
+
+[node name="Icon" type="Sprite" parent="KinematicBody2D"]
+position = Vector2( 142, 97 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 142, 97 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="KinematicBody2D"]
+position = Vector2( 232, 264 )
+scale = Vector2( 1, 1.01574 )
+current = true
+process_mode = 0
+limit_top = 0
+limit_bottom = 1400
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_drag_margin = true
+
+[node name="flappy_bird_coll-1" type="Node2D" parent="."]
+visible = false
+
+[node name="container_pipe" type="Node2D" parent="flappy_bird_coll-1"]
+
+[node name="pipe3" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 832, -16 )
+scale = Vector2( 1, 0.96 )
+
+[node name="pipe4" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 895, 1078 )
+rotation = 3.14159
+scale = Vector2( 1, 2.52 )
+
+[node name="pipe5" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 1160, -16 )
+scale = Vector2( 1, 1.68 )
+
+[node name="pipe6" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 1223, 1078 )
+rotation = 3.14159
+scale = Vector2( 1, 1.84 )
+
+[node name="pipe7" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 1472, -16 )
+scale = Vector2( 1, 1.44 )
+
+[node name="pipe8" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 1535, 1078 )
+rotation = 3.14159
+scale = Vector2( 1, 2.08 )
+
+[node name="pipe9" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 1792, -16 )
+scale = Vector2( 1, 2.16 )
+
+[node name="pipe10" parent="flappy_bird_coll-1/container_pipe" instance=ExtResource( 4 )]
+position = Vector2( 1855, 1078 )
+rotation = 3.14159
+scale = Vector2( 1, 1.36 )
+
+[node name="mario_coll_2" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="mario_coll_2"]
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 2
+collision_mask = 2
+format = 1
+tile_data = PoolIntArray( -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -131062, 0, 0, -131061, 0, 0, -131060, 0, 0, -131059, 0, 0, -131058, 0, 0, -131057, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, 65535, 0, 0, 15, 0, 0, 131071, 0, 0, 65551, 0, 0, 196607, 0, 0, 131087, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196612, 0, 0, 196614, 0, 0, 196616, 0, 0, 196618, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 0, 262159, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0 )
